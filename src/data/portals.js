@@ -12,7 +12,7 @@ export const portals = [
     {
     name: 'BP&O',
     url: 'https://bpando.org/',
-    image: '/images/BP&O.jpg',
+    image: '/images/fontsinuse.jpg',
   },
     {
     name: 'Are.na',
