@@ -1,4 +1,4 @@
-import NewsCard from '../components/NewsCard'
+import NewsCard from '../component/NewsCard'
 import { portals } from '../data/portals'
 
 export default function HomePage() {
