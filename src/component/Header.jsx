@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router'
+import { useEffect, useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const navItems = [
   { label: 'Main page', to: '/' },
@@ -8,6 +8,35 @@ const navItems = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef(null)
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined
+    }
+
+    function handlePointerDown(event) {
+      if (headerRef.current?.contains(event.target)) {
+        return
+      }
+
+      setMenuOpen(false)
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [menuOpen])
 
   function handleToggle() {
     setMenuOpen((prev) => !prev)
@@ -18,7 +47,7 @@ export default function Header() {
   }
 
   return (
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <div className="site-header__inner">
         <NavLink to="/" className="site-logo" onClick={handleClose}>
           News Grid

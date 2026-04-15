@@ -1,66 +1,92 @@
 export const portals = [
   {
+    id: 'its-nice-that',
     name: 'Its Nice That',
+    description: 'Creative industry news, features, and inspiration across art and design.',
     url: 'https://www.itsnicethat.com',
     image: '/images/itsnice.jpg',
   },
   {
+    id: 'fonts-in-use',
     name: 'Fonts In Use',
+    description: 'A public archive documenting typography in real-world projects and identities.',
     url: 'https://fontsinuse.com/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'bpo',
     name: 'BP&O',
+    description: 'Branding, packaging, and opinion pieces focused on identity design.',
     url: 'https://bpando.org/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'arena',
     name: 'Are.na',
+    description: 'A visual bookmarking space for collecting references, links, and research.',
     url: 'https://www.are.na/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'motionographer',
     name: 'Motionographer',
+    description: 'News and inspiration centered on motion design, animation, and visual storytelling.',
     url: 'https://motionographer.com/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'awwwards',
     name: 'Awwwards',
+    description: 'A showcase of standout digital experiences, web design, and interactive work.',
     url: 'https://www.awwwards.com/',
     image: '/images/fontsinuse.jpg',
   },
-    {
-    name: 'Codrop',
+  {
+    id: 'codrops',
+    name: 'Codrops',
+    description: 'Frontend experiments, tutorials, and modern UI inspiration for the web.',
     url: 'https://tympanus.net/codrops/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'i-love-typography',
     name: 'I Love Typography',
+    description: 'Articles, foundries, and editorial content dedicated to type culture.',
     url: 'https://ilovetypography.com/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'typewolf',
     name: 'Typewolf',
+    description: 'Curated font recommendations and examples of contemporary type usage.',
     url: 'https://www.typewolf.com/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'alphabettes',
     name: 'Alphabettes',
+    description: 'A collaborative platform highlighting diverse voices in typography and lettering.',
     url: 'https://www.alphabettes.org/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'koto-studio-journal',
     name: 'Koto Studio Journal',
+    description: 'Studio notes, branding perspectives, and behind-the-work creative thinking.',
     url: 'https://koto.studio/journal/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'wolff-olins-thinking',
     name: 'Wolff Olins Thinking',
+    description: 'Brand strategy essays and perspectives on culture, identity, and change.',
     url: 'https://www.wolffolins.com/thinking/',
     image: '/images/fontsinuse.jpg',
   },
-    {
+  {
+    id: 'ragged-edge',
     name: 'Ragged Edge',
+    description: 'Writing and reflections on branding, culture, and creative direction.',
     url: 'https://www.ragged-edge.com/thinking/',
     image: '/images/fontsinuse.jpg',
   },

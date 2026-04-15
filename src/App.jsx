@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './layouts/Layouts'
 import HomePage from './pages/HomePage'
 import SecondPage from './pages/Inspo'
@@ -8,7 +8,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/second" element={<SecondPage />} />
+        <Route path="/inspo" element={<SecondPage />} />
       </Route>
     </Routes>
   )

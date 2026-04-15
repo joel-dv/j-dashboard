@@ -12,10 +12,11 @@ export default function HomePage() {
       <section className="grid">
         {portals.map((portal) => (
           <NewsCard
-            key={portal.name}
+            key={portal.id}
             name={portal.name}
             url={portal.url}
             image={portal.image}
+            description={portal.description}
           />
         ))}
       </section>
