@@ -1,14 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
-import Layout from './layouts/Layouts'
-import HomePage from './pages/HomePage'
-import SecondPage from './pages/Inspo'
+import Layout from './layouts/Layout'
+import { appRoutes } from './data/routes'
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/inspo" element={<SecondPage />} />
+        {appRoutes.map((route) => {
+          const Page = route.element
+
+          return <Route key={route.path} path={route.path} element={<Page />} />
+        })}
       </Route>
     </Routes>
   )

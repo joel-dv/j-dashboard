@@ -1,12 +1,12 @@
 import NewsCard from '../component/NewsCard'
 import { portals } from '../data/portals'
 
-export default function HomePage() {
+export default function NewsPage() {
   return (
     <main className="page">
       <header className="page-intro">
         <h1>News Portal Grid</h1>
-        <p>Minimal dark homepage with animated news links.</p>
+        <p>A curated grid of design, branding, motion, and typography links.</p>
       </header>
 
       <section className="grid">

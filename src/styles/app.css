@@ -19,6 +19,8 @@
     --color-chip-bg: rgba(0, 0, 0, 0.35);
     --color-header-bg: rgba(5, 8, 13, 0.82);
     --color-button-bg: rgba(255, 255, 255, 0.04);
+    --color-inspo-panel: rgba(5, 8, 13, 0.38);
+    --color-inspo-card-shadow: rgba(255, 255, 255, 0.08);
 
     --space-2: 8px;
     --space-3: 10px;
@@ -48,6 +50,7 @@
         0 18px 40px rgba(0, 0, 0, 0.45);
     --shadow-panel: 0 14px 30px rgba(0, 0, 0, 0.28);
     --shadow-nav: 0 20px 45px rgba(0, 0, 0, 0.4);
+    --shadow-inspo: 0 25px 80px rgba(0, 0, 0, 0.35);
 
     --content-max-width: 1400px;
 }
@@ -325,6 +328,190 @@ img {
     margin-top: 0;
 }
 
+/* Inspo page */
+
+.inspo-page {
+    position: relative;
+    min-height: calc(100vh - 81px);
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 35%),
+        #020204;
+}
+
+.inspo-page__hero {
+    position: relative;
+    min-height: calc(100vh - 81px);
+    overflow: hidden;
+}
+
+.inspo-page__shader {
+    position: absolute;
+    inset: 0;
+}
+
+.inspo-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.inspo-page__content {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 81px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--space-5);
+    max-width: 720px;
+    padding: 0 var(--space-12) var(--space-24);
+    background:
+        linear-gradient(180deg, transparent 20%, rgba(2, 2, 4, 0.42) 55%, rgba(2, 2, 4, 0.88) 100%);
+}
+
+.inspo-page__eyebrow {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 7px var(--space-4);
+    border-radius: var(--radius-round);
+    background: var(--color-inspo-panel);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: var(--shadow-inspo);
+    backdrop-filter: blur(10px);
+    color: #ffe28a;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.inspo-page__content h1 {
+    margin: 0;
+    font-size: clamp(54px, 12vw, 132px);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    max-width: 8ch;
+}
+
+.inspo-page__content p {
+    margin: 0;
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(16px, 2vw, 21px);
+    line-height: 1.5;
+}
+
+.inspo-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-16);
+    max-width: 980px;
+    margin: 0 auto;
+    padding: var(--space-18) var(--space-12) var(--space-24);
+}
+
+.inspo-links__intro {
+    max-width: 560px;
+    text-align: center;
+}
+
+.inspo-links__kicker {
+    display: inline-flex;
+    margin-bottom: var(--space-6);
+    padding: 6px var(--space-4);
+    border-radius: var(--radius-round);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.inspo-links__intro h2 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+}
+
+.inspo-links__intro p {
+    margin: var(--space-6) auto 0;
+    max-width: 34rem;
+    color: var(--color-text-muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.inspo-links__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 320px));
+    justify-content: center;
+    gap: var(--space-10);
+    width: 100%;
+}
+
+.inspo-link-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 280px;
+    padding: var(--space-10);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    background: transparent;
+    color: var(--color-text);
+    text-decoration: none;
+    box-shadow: 0 0 38px var(--color-inspo-card-shadow);
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
+}
+
+.inspo-link-card::before {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.inspo-link-card:hover {
+    transform: translateY(-4px);
+    border-color: #ffffff;
+    box-shadow: 0 0 48px rgba(255, 255, 255, 0.12);
+}
+
+.inspo-link-card__tag {
+    align-self: flex-start;
+    margin-bottom: auto;
+    padding: 7px var(--space-4);
+    border-radius: var(--radius-round);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.inspo-link-card h3 {
+    margin: 0 0 var(--space-4);
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.inspo-link-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 /* Responsive */
 
 @media (max-width: 1100px) {
@@ -353,5 +540,29 @@ img {
 
     .grid {
         grid-template-columns: 1fr;
+    }
+
+    .inspo-page,
+    .inspo-page__hero,
+    .inspo-page__content {
+        min-height: calc(100vh - 73px);
+    }
+
+    .inspo-page__content {
+        justify-content: flex-end;
+        padding: 0 var(--space-7) var(--space-14);
+    }
+
+    .inspo-links {
+        gap: var(--space-14);
+        padding: var(--space-14) var(--space-7) var(--space-24);
+    }
+
+    .inspo-links__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .inspo-link-card {
+        min-height: 240px;
     }
 }

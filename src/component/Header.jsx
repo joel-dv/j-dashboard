@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-
-const navItems = [
-  { label: 'Main page', to: '/' },
-  { label: 'Inspo page', to: '/inspo' },
-]
+import { appRoutes } from '../data/routes'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -70,19 +66,21 @@ export default function Header() {
           id="site-nav"
           className={`site-nav ${menuOpen ? 'is-open' : ''}`}
         >
-          {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === '/'}
-              className={({ isActive }) =>
-                `site-nav__link ${isActive ? 'is-active' : ''}`
-              }
-              onClick={handleClose}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {appRoutes
+            .filter((route) => route.showInNav)
+            .map((route) => (
+              <NavLink
+                key={route.path}
+                to={route.path}
+                end={route.path === '/'}
+                className={({ isActive }) =>
+                  `site-nav__link ${isActive ? 'is-active' : ''}`
+                }
+                onClick={handleClose}
+              >
+                {route.label}
+              </NavLink>
+            ))}
         </nav>
       </div>
     </header>
