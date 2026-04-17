@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom'
 import InspoShader from '../component/InspoShader'
 import InspoLineShader from '../component/InspoLineShader'
+import InspoDotGridShader from '../component/InspoDotGridShader'
+import InspoLineP5 from '../component/InspoLineP5'
 
-// Swap this to InspoLineShader for the monochrome line version.
-const ActiveShader = InspoLineShader
+const shaderVariants = {
+  dotGrid: InspoDotGridShader,
+  line: InspoLineShader,
+  color: InspoShader,
+  p5: InspoLineP5,
+}
+
+// Swap the key here if you want to preview another study.
+const ActiveShader = shaderVariants.dotGrid
 
 const inspoLinks = [
   {
@@ -32,8 +41,8 @@ export default function Inspo() {
           <span className="inspo-page__eyebrow">Generative study</span>
           <h1>A simple dashboard with style</h1>
           <p>
-            A full-screen fragment shader generating a pulsing, radially
-            symmetric dot field with kaleidoscopic color cycling.
+            A restrained fullscreen dot grid that gently contracts around your
+            cursor, then eases back into place as the motion clears.
           </p>
         </div>
       </section>

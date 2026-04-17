@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import InspoShaderClaude from '../component/InspoShaderClaude'
+import InspoShaderClaude from '../component/InspoShaderClaude2'
 
 export default function Inspo2() {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { appRoutes } from '../data/routes'
+import { getVisibleNavigationItems } from '../data/navigation'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -66,9 +66,7 @@ export default function Header() {
           id="site-nav"
           className={`site-nav ${menuOpen ? 'is-open' : ''}`}
         >
-          {appRoutes
-            .filter((route) => route.showInNav)
-            .map((route) => (
+          {getVisibleNavigationItems().map((route) => (
               <NavLink
                 key={route.path}
                 to={route.path}
