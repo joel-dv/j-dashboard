@@ -2,6 +2,7 @@ import News from '../pages/News'
 import Home2 from '../pages/Home2'
 import Inspo from '../pages/Inspo'
 import About from '../pages/About'
+import Inspo2 from '../pages/Inspo2'
 
 export const appRoutes = [
   {
@@ -26,6 +27,12 @@ export const appRoutes = [
     path: '/about',
     label: 'About page',
     element: About,
+    showInNav: true,
+  },
+  {
+    path: '/inspo2',
+    label: 'Inspo2 page',
+    element: Inspo2,
     showInNav: true,
   },
 ]
