@@ -9,7 +9,7 @@ export default function ArtsPage() {
               eyebrow="Latest"
               title="Arts & Fashion News"
               caption="Get the latest news delivered to your feet"
-              backgroundImage="/images/itsnice.jpg"
+              backgroundImage="/images/bgnews.jpg"
             />
 
 

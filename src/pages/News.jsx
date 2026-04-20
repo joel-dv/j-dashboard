@@ -9,7 +9,7 @@ export default function NewsPage() {
               eyebrow="Latest"
               title="Main Design News"
               caption="Get the latest news delivered to your feet"
-              backgroundImage="/images/itsnice.jpg"
+              backgroundImage="/images/bgnews2.jpg"
             />
 
 

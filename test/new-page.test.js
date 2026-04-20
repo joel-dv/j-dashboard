@@ -7,33 +7,14 @@ import {
   buildPageTemplate,
   createNewPage,
   updateNavigationSource,
-  updateRoutesSource,
 } from '../scripts/new-page.js'
 
-test('createNewPage writes the page file and updates navigation and routes', () => {
+test('createNewPage writes the page file and updates navigation', () => {
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'new-page-test-'))
 
   try {
     fs.mkdirSync(path.join(tempRoot, 'src/pages'), { recursive: true })
     fs.mkdirSync(path.join(tempRoot, 'src/data'), { recursive: true })
-
-    fs.writeFileSync(
-      path.join(tempRoot, 'src/data/routes.js'),
-      `import { lazy } from 'react'
-import { navigationItems } from './navigation'
-
-const pageComponents = {
-  Home: lazy(() => import('../pages/Home')),
-}
-
-export const appRoutes = navigationItems.map((route) => ({
-  path: route.path,
-  label: route.label,
-  element: pageComponents[route.page],
-  showInNav: route.showInNav,
-}))
-`
-    )
 
     fs.writeFileSync(
       path.join(tempRoot, 'src/data/navigation.js'),
@@ -56,31 +37,16 @@ export const appRoutes = navigationItems.map((route) => ({
       buildPageTemplate('CaseStudy')
     )
 
-    const routesSource = fs.readFileSync(path.join(tempRoot, 'src/data/routes.js'), 'utf8')
     const navigationSource = fs.readFileSync(
       path.join(tempRoot, 'src/data/navigation.js'),
       'utf8'
     )
 
-    assert.match(routesSource, /CaseStudy: lazy\(\(\) => import\('\.\.\/pages\/CaseStudy'\)\),/)
     assert.match(navigationSource, /path: '\/case-study'/)
     assert.match(navigationSource, /page: 'CaseStudy'/)
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true })
   }
-})
-
-test('updateRoutesSource rejects duplicate page registrations', () => {
-  assert.throws(
-    () =>
-      updateRoutesSource(
-        `const pageComponents = {
-  CaseStudy: lazy(() => import('../pages/CaseStudy')),
-}`,
-        'CaseStudy'
-      ),
-    /already registered/
-  )
 })
 
 test('updateNavigationSource rejects duplicate navigation entries', () => {

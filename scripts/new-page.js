@@ -38,26 +38,6 @@ export function buildPageTemplate(pageName) {
 `
 }
 
-export function updateRoutesSource(routesSource, pageName) {
-  const pageRegistration = `  ${pageName}: lazy(() => import('../pages/${pageName}')),`
-
-  if (routesSource.includes(pageRegistration)) {
-    throw new Error(`${pageName} is already registered in src/data/routes.js`)
-  }
-
-  const pageComponentsPattern = /(const pageComponents = \{\n)([\s\S]*?)(\n\})/
-
-  if (!pageComponentsPattern.test(routesSource)) {
-    throw new Error('Could not determine where to insert the page registration')
-  }
-
-  return routesSource.replace(
-    pageComponentsPattern,
-    (_, objectStart, objectBody, objectEnd) =>
-      `${objectStart}${objectBody}${objectBody.endsWith('\n') ? '' : '\n'}${pageRegistration}${objectEnd}`
-  )
-}
-
 export function updateNavigationSource(navigationSource, pageName) {
   const routePath = getRoutePath(pageName)
   const routeLabel = `${pageName} page`
@@ -95,35 +75,25 @@ export function createNewPage(projectRoot, pageName) {
   }
 
   const pageFilePath = path.join(projectRoot, 'src/pages', `${pageName}.jsx`)
-  const routesFilePath = path.join(projectRoot, 'src/data/routes.js')
   const navigationFilePath = path.join(projectRoot, 'src/data/navigation.js')
 
   if (fs.existsSync(pageFilePath)) {
     throw new Error(`Page already exists: src/pages/${pageName}.jsx`)
   }
 
-  if (!fs.existsSync(routesFilePath)) {
-    throw new Error('Could not find src/data/routes.js')
-  }
-
   if (!fs.existsSync(navigationFilePath)) {
     throw new Error('Could not find src/data/navigation.js')
   }
 
-  const routesSource = fs.readFileSync(routesFilePath, 'utf8')
   const navigationSource = fs.readFileSync(navigationFilePath, 'utf8')
-
-  const updatedRoutes = updateRoutesSource(routesSource, pageName)
   const updatedNavigation = updateNavigationSource(navigationSource, pageName)
 
   fs.writeFileSync(pageFilePath, buildPageTemplate(pageName))
-  fs.writeFileSync(routesFilePath, updatedRoutes)
   fs.writeFileSync(navigationFilePath, updatedNavigation)
 
   return {
     pageFilePath,
     routePath: getRoutePath(pageName),
-    routesFilePath,
     navigationFilePath,
   }
 }
@@ -138,7 +108,6 @@ if (invokedPath === scriptPath) {
 
     console.log(`Created ${path.relative(process.cwd(), result.pageFilePath)}`)
     console.log(`Registered route ${result.routePath} in src/data/navigation.js`)
-    console.log('Registered page component in src/data/routes.js')
   } catch (error) {
     console.error(error.message)
     process.exit(1)

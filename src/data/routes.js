@@ -1,18 +1,24 @@
 import { lazy } from 'react'
 import { navigationItems } from './navigation'
 
-const pageComponents = {
-  News: lazy(() => import('../pages/News')),
-  Arts: lazy(() => import('../pages/Arts')),
-  Home2: lazy(() => import('../pages/Home2')),
-  Home: lazy(() => import('../pages/Home')),
-  About: lazy(() => import('../pages/About')),
-  Inspo2: lazy(() => import('../pages/Inspo2')),
+const pageModules = import.meta.glob('../pages/*.jsx')
+
+function getPageComponent(pageName) {
+  const pageModulePath = `../pages/${pageName}.jsx`
+  const pageLoader = pageModules[pageModulePath]
+
+  if (!pageLoader) {
+    throw new Error(
+      `Missing page component for "${pageName}". Expected file: src/pages/${pageName}.jsx`
+    )
+  }
+
+  return lazy(pageLoader)
 }
 
 export const appRoutes = navigationItems.map((route) => ({
   path: route.path,
   label: route.label,
-  element: pageComponents[route.page],
+  element: getPageComponent(route.page),
   showInNav: route.showInNav,
 }))
