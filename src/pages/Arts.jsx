@@ -2,12 +2,12 @@ import NewsCard from '../component/NewsCard'
 import { portals } from '../data/portals'
 import Hero from '../component/Hero'
 
-export default function NewsPage() {
+export default function ArtsPage() {
   return (
     <main className="">
             <Hero
               eyebrow="Latest"
-              title="Main Design News"
+              title="Arts & Fashion News"
               caption="Get the latest news delivered to your feet"
               backgroundImage="/images/itsnice.jpg"
             />

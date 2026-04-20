@@ -12,6 +12,12 @@ export const navigationItems = [
     showInNav: true,
   },
   {
+    path: '/arts',
+    label: 'Arts page',
+    page: 'Arts',
+    showInNav: true,
+  },
+  {
     path: '/home2',
     label: 'Home2 page',
     page: 'Home2',

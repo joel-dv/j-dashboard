@@ -3,6 +3,7 @@ import { navigationItems } from './navigation'
 
 const pageComponents = {
   News: lazy(() => import('../pages/News')),
+  Arts: lazy(() => import('../pages/Arts')),
   Home2: lazy(() => import('../pages/Home2')),
   Home: lazy(() => import('../pages/Home')),
   About: lazy(() => import('../pages/About')),
