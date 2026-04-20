@@ -1,8 +1,8 @@
 export const navigationItems = [
   {
     path: '/',
-    label: 'Inspo page',
-    page: 'Inspo',
+    label: 'Home page',
+    page: 'Home',
     showInNav: true,
   },
   {

@@ -1,13 +1,17 @@
 import NewsCard from '../component/NewsCard'
 import { portals } from '../data/portals'
+import Hero from '../component/Hero'
 
 export default function NewsPage() {
   return (
-    <main className="page">
-      <header className="page-intro">
-        <h1>News Portal Grid</h1>
-        <p>A curated grid of design, branding, motion, and typography links.</p>
-      </header>
+    <main className="">
+            <Hero
+              eyebrow="Latest"
+              title="News Grid"
+              caption="Get the latest news delivered to your feet"
+              backgroundImage="/images/itsnice.jpg"
+            />
+
 
       <section className="grid">
         {portals.map((portal) => (
