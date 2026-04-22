@@ -35,6 +35,12 @@ export const navigationItems = [
     page: 'Inspo2',
     showInNav: true,
   },
+  {
+    path: '/dev-tools',
+    label: 'DevTools page',
+    page: 'DevTools',
+    showInNav: true,
+  },
 ]
 
 export function getVisibleNavigationItems(items = navigationItems) {
