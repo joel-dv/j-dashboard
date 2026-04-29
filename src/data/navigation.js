@@ -41,6 +41,18 @@ export const navigationItems = [
     page: 'DevTools',
     showInNav: true,
   },
+  {
+    path: '/airbnb',
+    label: 'Airbnb page',
+    page: 'Airbnb',
+    showInNav: true,
+  },
+  {
+    path: '/ibm',
+    label: 'Ibm page',
+    page: 'Ibm',
+    showInNav: true,
+  },
 ]
 
 export function getVisibleNavigationItems(items = navigationItems) {

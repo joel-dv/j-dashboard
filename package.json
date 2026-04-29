@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.14",
+    "add": "^2.0.6",
+    "bmw": "^0.0.0",
+    "getdesign": "^0.6.7",
     "p5": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
