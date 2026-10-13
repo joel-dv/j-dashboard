@@ -3,6 +3,7 @@ import Home2 from '../pages/Home2'
 import Inspo from '../pages/Inspo'
 import About from '../pages/About'
 import Inspo2 from '../pages/Inspo2'
+import Tools from '../pages/Tools'
 
 export const appRoutes = [
   {
@@ -33,6 +34,12 @@ export const appRoutes = [
     path: '/inspo2',
     label: 'Inspo2 page',
     element: Inspo2,
+    showInNav: true,
+  },
+  {
+    path: '/tools',
+    label: 'Tools',
+    element: Tools,
     showInNav: true,
   },
 ]

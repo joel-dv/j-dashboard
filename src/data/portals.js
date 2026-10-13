@@ -90,4 +90,25 @@ export const portals = [
     url: 'https://www.ragged-edge.com/thinking/',
     image: '/images/fontsinuse.jpg',
   },
+  {
+    id: 'magazine-dm',
+    name: 'Magazine Design Matters',
+    description: '',
+    url: 'https://magazine.designmatters.io',
+    image: '/images/fontsinuse.jpg',
+  },
+    {
+    id: 'middle-plane',
+    name: 'Middle Plane',
+    description: '',
+    url: 'https://www.middleplane.com/magazine/',
+    image: '/images/fontsinuse.jpg',
+  }, 
+    {
+    id: 'tight-media',
+    name: 'Tight Media',
+    description: '',
+    url: 'https://en-2018.tight.media',
+    image: '/images/fontsinuse.jpg',
+  },
 ]
