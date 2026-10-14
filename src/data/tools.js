@@ -97,4 +97,25 @@ export const tools = [
     url: 'https://fontsinuse.com/',
     image: '/images/fontsinuse.jpg',
   },
+  {
+    id: 'radix',
+    name: 'Radix',
+    description: 'Core building blocks for your design system',
+    url: 'https://www.radix-ui.com/primitives',
+    image: '/images/itsnice.jpg',
+  },
+  {
+    id: 'khroma',
+    name: 'Khroma',
+    description: 'Khroma uses AI to learn which colors you like and creates limitless palettes for you to discover, search, and save.',
+    url: 'https://www.khroma.co/',
+    image: '/images/fontsinuse.jpg',
+  },
+  {
+    id: 'gumroad',
+    name: 'Gumroad',
+    description: 'Sell what you want',
+    url: 'https://gumroad.com/',
+    image: '/images/fontsinuse.jpg',
+  },
 ]
