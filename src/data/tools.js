@@ -118,4 +118,18 @@ export const tools = [
     url: 'https://gumroad.com/',
     image: '/images/fontsinuse.jpg',
   },
+  {
+    id: 'colletivo',
+    name: 'Collletttivo Typefaces',
+    description: 'Typefaces',
+    url: 'https://www.collletttivo.it/typefaces',
+    image: '/images/fontsinuse.jpg',
+  },
+  {
+    id: 'fontshare',
+    name: 'Fontshare Typefaces',
+    description: 'Fontshare Typefaces',
+    url: 'https://fontshare.com/',
+    image: '/images/fontsinuse.jpg',
+  },
 ]

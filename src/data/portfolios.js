@@ -41,4 +41,11 @@ export const portfolios = [
     url: 'https://mikekus.com/',
     image: '/images/fontsinuse.jpg',
   },
+  {
+    id: 'studiofeixen',
+    name: 'Studio Feixen',
+    description: '',
+    url: 'https://www.studiofeixen.ch/',
+    image: '/images/fontsinuse.jpg',
+  },
 ]
