@@ -41,6 +41,12 @@ export const navigationItems = [
     page: 'Tools',
     showInNav: true,
   },
+  {
+    path: '/portfolios',
+    label: 'Portfolios page',
+    page: 'Portfolios',
+    showInNav: true,
+  },
 ]
 
 export function getVisibleNavigationItems(items = navigationItems) {
