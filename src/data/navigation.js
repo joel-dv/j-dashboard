@@ -1,50 +1,32 @@
 export const navigationItems = [
   {
     path: '/',
-    label: 'Home page',
+    label: 'Home',
     page: 'Home',
     showInNav: true,
   },
   {
     path: '/news',
-    label: 'News page',
+    label: 'News',
     page: 'News',
     showInNav: true,
   },
   {
-    path: '/arts',
-    label: 'Arts page',
-    page: 'Arts',
-    showInNav: true,
-  },
-  {
-    path: '/home2',
-    label: 'Home2 page',
-    page: 'Home2',
-    showInNav: true,
-  },
-  {
-    path: '/about',
-    label: 'About page',
-    page: 'About',
-    showInNav: true,
-  },
-  {
-    path: '/inspo2',
-    label: 'Inspo2 page',
-    page: 'Inspo2',
-    showInNav: true,
-  },
-  {
     path: '/tools',
-    label: 'Tools page',
+    label: 'Tools',
     page: 'Tools',
     showInNav: true,
   },
   {
     path: '/portfolios',
-    label: 'Portfolios page',
+    label: 'Portfolios',
     page: 'Portfolios',
+    showInNav: true,
+  },
+    {
+    path: '/about',
+    label: 'About',
+    page: 'About',
     showInNav: true,
   },
 ]

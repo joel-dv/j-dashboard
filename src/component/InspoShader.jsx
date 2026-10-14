@@ -67,7 +67,7 @@ const fragmentShader = `
     float cellNoise = hash21(cell);
     float dotRadius = mix(0.08, 0.34, pulse * (0.65 + cellNoise * 0.35));
 
-    float dot = smoothstep(dotRadius, dotRadius - 0.07, length(local));
+    float dot = 1.0 - smoothstep(dotRadius - 0.07, dotRadius, length(local));
 
     float ring = sin(radius * 24.0 - time * 3.0);
     float spokes = cos(angle * 24.0 + time * 2.2);
@@ -85,7 +85,7 @@ const fragmentShader = `
     vec3 background = vec3(0.02, 0.01, 0.05);
     vec3 finalColor = mix(background, color, clamp(energy, 0.0, 1.0));
 
-    float vignette = smoothstep(1.3, 0.25, radius);
+    float vignette = 1.0 - smoothstep(0.25, 1.3, radius);
     finalColor *= vignette;
 
     gl_FragColor = vec4(finalColor, 1.0);
@@ -102,11 +102,11 @@ function ShaderPlane() {
 
     const { width, height } = state.size
     materialRef.current.uniforms.uTime.value = state.clock.elapsedTime
-    materialRef.current.uniforms.uResolution.value.set(width, height)
+    materialRef.current.uniforms.uResolution.value.set(Math.max(width, 1), Math.max(height, 1))
   })
 
   return (
-    <mesh>
+    <mesh frustumCulled={false}>
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
         ref={materialRef}
@@ -116,6 +116,9 @@ function ShaderPlane() {
         }}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
+        depthWrite={false}
+        depthTest={false}
+        toneMapped={false}
       />
     </mesh>
   )
@@ -129,6 +132,7 @@ export default function InspoShader() {
       dpr={[1, 2]}
       orthographic
       camera={{ position: [0, 0, 1], zoom: 1 }}
+      fallback={<p className="panel">This visual study requires WebGL support. Try enabling hardware acceleration or opening it in another browser.</p>}
     >
       <ShaderPlane />
     </Canvas>

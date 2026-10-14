@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 const vertexShader = /* glsl */ `
@@ -41,7 +41,7 @@ const fragmentShader = /* glsl */ `
 
   float hexDot(vec2 p, float scale, float rad) {
     float d = hexDist(p * scale);
-    return smoothstep(rad + 0.027, rad - 0.027, d);
+    return 1.0 - smoothstep(rad - 0.027, rad + 0.027, d);
   }
 
   vec2 warp(vec2 p, float t) {
@@ -148,20 +148,18 @@ const fragmentShader = /* glsl */ `
 `
 
 export default function InspoShaderClaude2() {
-  const { size } = useThree()
-
   const uniforms = useMemo(() => ({
     uTime:       { value: 0.0 },
-    uResolution: { value: new THREE.Vector2(size.width, size.height) },
-  }), []) // eslint-disable-line react-hooks/exhaustive-deps
+    uResolution: { value: new THREE.Vector2(1, 1) },
+  }), [])
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, size }) => {
     uniforms.uTime.value = clock.getElapsedTime()
-    uniforms.uResolution.value.set(size.width, size.height)
+    uniforms.uResolution.value.set(Math.max(size.width, 1), Math.max(size.height, 1))
   })
 
   return (
-    <mesh>
+    <mesh frustumCulled={false}>
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
         vertexShader={vertexShader}
@@ -169,6 +167,7 @@ export default function InspoShaderClaude2() {
         uniforms={uniforms}
         depthWrite={false}
         depthTest={false}
+        toneMapped={false}
       />
     </mesh>
   )

@@ -46,7 +46,7 @@ export default function Header() {
     <header ref={headerRef} className="site-header">
       <div className="site-header__inner">
         <NavLink to="/" className="site-logo" onClick={handleClose}>
-          News Grid
+          Dashboard
         </NavLink>
 
         <button

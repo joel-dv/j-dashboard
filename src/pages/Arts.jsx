@@ -6,9 +6,8 @@ export default function ArtsPage() {
   return (
     <main className="">
             <Hero
-              eyebrow="Latest"
               title="Arts & Fashion News"
-              caption="Get the latest news delivered to your feet"
+              caption="Art news"
               backgroundImage="/images/bgnews.jpg"
             />
 

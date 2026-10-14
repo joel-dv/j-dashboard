@@ -6,9 +6,8 @@ export default function NewsPage() {
   return (
     <main className="">
             <Hero
-              eyebrow="Latest"
               title="Main Design News"
-              caption="Get the latest news delivered to your feet"
+              caption="Latest news"
               backgroundImage="/images/bgnews2.jpg"
             />
 

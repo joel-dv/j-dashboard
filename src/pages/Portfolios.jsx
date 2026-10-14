@@ -6,10 +6,10 @@ export default function Portfolios() {
     <main className="page">
       <header className="page-intro">
         <h1>Portfolios</h1>
-        <p>A new page generated for your dashboard.</p>
+        <p>Portfolios of recommended designers</p>
       </header>
 
-      <section className="page grid">
+      <section className="grid">
         {portfolios.map((portfolio) => (
           <NewsCard
             key={portfolio.id}

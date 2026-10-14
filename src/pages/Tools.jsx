@@ -6,7 +6,7 @@ export default function ToolsPage() {
     <main className="page">
       <header className="page-intro">
         <h1>Tools Portal Grid</h1>
-        <p>A curated grid of design, branding, motion, and typography links.</p>
+        <p>Design, branding, motion, and typography links.</p>
       </header>
 
       <section className="grid">
