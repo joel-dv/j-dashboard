@@ -1,45 +1,24 @@
-import News from '../pages/News'
-import Home2 from '../pages/Home2'
-import Inspo from '../pages/Inspo'
-import About from '../pages/About'
-import Inspo2 from '../pages/Inspo2'
-import Tools from '../pages/Tools'
+import { lazy } from 'react'
+import { navigationItems } from './navigation'
 
-export const appRoutes = [
-  {
-    path: '/',
-    label: 'Inspo page',
-    element: Inspo,
-    showInNav: true,
-  },
-  {
-    path: '/news',
-    label: 'News page',
-    element: News,
-    showInNav: true,
-  },
-  {
-    path: '/home2',
-    label: 'Home2 page',
-    element: Home2,
-    showInNav: true,
-  },
-  {
-    path: '/about',
-    label: 'About page',
-    element: About,
-    showInNav: true,
-  },
-  {
-    path: '/inspo2',
-    label: 'Inspo2 page',
-    element: Inspo2,
-    showInNav: true,
-  },
-  {
-    path: '/tools',
-    label: 'Tools',
-    element: Tools,
-    showInNav: true,
-  },
-]
+const pageModules = import.meta.glob('../pages/*.jsx')
+
+function getPageComponent(pageName) {
+  const pageModulePath = `../pages/${pageName}.jsx`
+  const pageLoader = pageModules[pageModulePath]
+
+  if (!pageLoader) {
+    throw new Error(
+      `Missing page component for "${pageName}". Expected file: src/pages/${pageName}.jsx`
+    )
+  }
+
+  return lazy(pageLoader)
+}
+
+export const appRoutes = navigationItems.map((route) => ({
+  path: route.path,
+  label: route.label,
+  element: getPageComponent(route.page),
+  showInNav: route.showInNav,
+}))

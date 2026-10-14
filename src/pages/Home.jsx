@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom'
-import InspoShader from '../component/InspoShader'
-import InspoLineShader from '../component/InspoLineShader'
+import { lazy, Suspense } from 'react'
 
-// Swap this to InspoLineShader for the monochrome line version.
-const ActiveShader = InspoLineShader
+const shaderVariants = {
+  dotGrid: lazy(() => import('../component/InspoDotGridShader')),
+  line: lazy(() => import('../component/InspoLineShader')),
+  color: lazy(() => import('../component/InspoShader')),
+  p5: lazy(() => import('../component/InspoLineP5')),
+  rectangles: lazy(() => import('../component/InspoRectangles.jsx')),
+}
+
+// Swap the key here if you want to preview another study.
+const ActiveShader = shaderVariants.rectangles
 
 const inspoLinks = [
   {
@@ -25,15 +32,17 @@ export default function Inspo() {
     <main className="inspo-page">
       <section className="inspo-page__hero">
         <div className="inspo-page__shader">
-          <ActiveShader />
+           <Suspense fallback={<div className="inspo-page__shader-fallback" />}>
+            <ActiveShader />
+          </Suspense>
         </div>
 
         <div className="inspo-page__content">
           <span className="inspo-page__eyebrow">Generative study</span>
           <h1>A simple dashboard with style</h1>
           <p>
-            A full-screen fragment shader generating a pulsing, radially
-            symmetric dot field with kaleidoscopic color cycling.
+            A restrained fullscreen dot grid that gently contracts around your
+            cursor, then eases back into place as the motion clears.
           </p>
         </div>
       </section>
